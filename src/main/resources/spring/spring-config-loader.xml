@@ -1,0 +1,28 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="finalProperties"  class="com.haotian.plugins.config.PropertiesBeanFactory">
+        <property name="locations">
+            <list>
+                <value>classpath:/dev.properties</value>
+                <value>classpath:/config/dev.properties</value>
+                <value>classpath:/../config/dev.properties</value>
+                <value>classpath:/../../config/dev.properties</value>
+                <value>classpath:/../../../config/dev.properties</value>
+                <value>classpath:/../../../../config/dev.properties</value>
+                <value>classpath:/../../../../../config/dev.properties</value>
+                <value>classpath:/../../../../../../config/dev.properties</value>
+                <value>classpath:/../../../../../../../config/dev.properties</value>
+            </list>
+        </property>
+    </bean>
+
+    <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="properties" ref="finalProperties" />
+        <property name="order" value="-1" />
+    </bean>
+
+</beans>
+
